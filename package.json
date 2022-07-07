@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "babylonjs": "^5.14.0"
+  }
+}
