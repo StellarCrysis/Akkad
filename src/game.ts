@@ -9,15 +9,21 @@ export class Game {
     // Текущее состояние
     private _state: GameState = null!
 
+    // Функция отрисовки состояния
+    private _renderFunc = () => {
+        this._state.render()
+    }
+
     // HTML канвас игры
-    private canvas: HTMLCanvasElement
+    canvas: HTMLCanvasElement
 
     // Игровой движок
-    private engine: BABYLON.Engine
+    engine: BABYLON.Engine
 
     // Конструктор
     private constructor() {
         this.canvas = document.createElement("canvas")
+        document.body.appendChild(this.canvas)
         this.engine = new BABYLON.Engine(this.canvas, true)
     }
 
@@ -26,9 +32,11 @@ export class Game {
         // Освобождает предыдущее состояние
         if (this._state != null) {
             this._state.dispose()
+            this.engine.stopRenderLoop(this._renderFunc)
         }
 
         this._state = state
+        this.engine.runRenderLoop(this._renderFunc)
         return state.enter()
     }
 }
