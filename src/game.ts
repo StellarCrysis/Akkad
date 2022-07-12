@@ -3,9 +3,6 @@ import { GameState } from "./gamestate"
 
 // Основной класс игры
 export class Game {
-    // Инстанс игры
-    static instance = new Game()
-
     // Текущее состояние
     private _state: GameState = null!
 
@@ -15,16 +12,17 @@ export class Game {
     }
 
     // HTML канвас игры
-    canvas: HTMLCanvasElement
+    static canvas: HTMLCanvasElement
 
     // Игровой движок
-    engine: BABYLON.Engine
+    static engine: BABYLON.Engine
 
     // Конструктор
-    private constructor() {
-        this.canvas = document.createElement("canvas")
-        document.body.appendChild(this.canvas)
-        this.engine = new BABYLON.Engine(this.canvas, true)
+    constructor(elementId: string) {
+        let root = document.getElementById(elementId)!
+        Game.canvas = document.createElement("canvas")
+        root.appendChild(Game.canvas)
+        Game.engine = new BABYLON.Engine(Game.canvas, true)
     }
 
     // Устанавливает состояние
@@ -32,11 +30,11 @@ export class Game {
         // Освобождает предыдущее состояние
         if (this._state != null) {
             this._state.dispose()
-            //this.engine.stopRenderLoop(this._renderFunc)
+            Game.engine.stopRenderLoop(this._renderFunc)
         }
 
         this._state = state
-        this.engine.runRenderLoop(this._renderFunc)
+        Game.engine.runRenderLoop(this._renderFunc)
         return state.enter()
     }
 }
