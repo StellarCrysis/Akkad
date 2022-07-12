@@ -1,4 +1,4 @@
-import * as BABYLON from "babylonjs"
+import * as BABYLON from "@babylonjs/core"
 import { GameState } from "./gamestate"
 
 // Основной класс игры
@@ -32,7 +32,7 @@ export class Game {
         // Освобождает предыдущее состояние
         if (this._state != null) {
             this._state.dispose()
-            this.engine.stopRenderLoop(this._renderFunc)
+            //this.engine.stopRenderLoop(this._renderFunc)
         }
 
         this._state = state

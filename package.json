@@ -1,5 +1,31 @@
 {
   "devDependencies": {
-    "babylonjs": "^5.14.0"
+    "@babylonjs/core": "^5.14.1",
+    "babylonjs": "^5.14.1"
+  },
+  "name": "akkad",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "type": "module",
+  "description": "",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StellarCrysis/Akkad.git"
+  },
+  "author": "Grabli66",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StellarCrysis/Akkad/issues"
+  },
+  "homepage": "https://github.com/StellarCrysis/Akkad#readme",
+  "files": [
+    "./lib/**/*"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    "akkad": "./lib/**/*"
   }
 }
