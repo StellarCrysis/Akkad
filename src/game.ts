@@ -1,10 +1,10 @@
 import * as BABYLON from "@babylonjs/core"
-import { GameState } from "./gamestate"
+import { BaseState } from "./basestate"
 
 // Основной класс игры
 export class Game {
     // Текущее состояние
-    private _state: GameState = null!
+    private _state: BaseState = null!
 
     // Функция отрисовки состояния
     private _renderFunc = () => {
@@ -18,15 +18,14 @@ export class Game {
     static engine: BABYLON.Engine
 
     // Конструктор
-    constructor(elementId: string) {
-        let root = document.getElementById(elementId)!
-        Game.canvas = document.createElement("canvas")
-        root.appendChild(Game.canvas)
+    constructor(canvasId: string) {
+        let canvas = document.getElementById(canvasId) as HTMLCanvasElement
+        Game.canvas = canvas
         Game.engine = new BABYLON.Engine(Game.canvas, true)
     }
 
     // Устанавливает состояние
-    setState(state: GameState): Promise<void> {
+    setState(state: BaseState): Promise<void> {
         // Освобождает предыдущее состояние
         if (this._state != null) {
             this._state.dispose()

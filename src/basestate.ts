@@ -2,13 +2,17 @@ import * as BABYLON from "@babylonjs/core"
 import { Game } from "./game"
 
 // Состояние игры
-export abstract class GameState implements BABYLON.IDisposable 
-{
+export abstract class BaseState implements BABYLON.IDisposable {
   // Основная сцена
-  protected mainscene: BABYLON.Scene = null!
+  protected mainscene: BABYLON.Scene
+
+  // Возвращает элемент canvas
+  protected get canvas () {
+    return Game.canvas
+  }
 
   // Конструктор
-  сonstructor() {
+  constructor() {    
     this.mainscene = new BABYLON.Scene(Game.engine)
   }
 
@@ -21,5 +25,7 @@ export abstract class GameState implements BABYLON.IDisposable
   abstract enter(): Promise<void>
 
   // Освобождает ресурсы
-  abstract dispose(): void
+  dispose() {
+    this.dispose()
+  }
 }

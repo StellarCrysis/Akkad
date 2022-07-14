@@ -5,10 +5,9 @@
   },
   "name": "akkad",
   "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "type": "module",
+  "types": "lib/index.d.ts",  
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StellarCrysis/Akkad.git"
@@ -18,14 +17,8 @@
   "bugs": {
     "url": "https://github.com/StellarCrysis/Akkad/issues"
   },
-  "homepage": "https://github.com/StellarCrysis/Akkad#readme",
-  "files": [
-    "./lib/**/*"
-  ],
+  "homepage": "https://github.com/StellarCrysis/Akkad#readme",  
   "scripts": {
     "build": "tsc"
-  },
-  "exports": {
-    "akkad": "./lib/**/*"
-  }
+  }  
 }
