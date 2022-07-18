@@ -1,5 +1,7 @@
 import * as BABYLON from "@babylonjs/core"
 import { BaseState } from "./basestate"
+import { DefaultLoadingScreen } from "./defaultloadingscreen"
+import { ILoadingScreen } from "./iloadingscreen"
 
 // Основной класс игры
 export class Game {
@@ -11,6 +13,9 @@ export class Game {
         this._state.render()
     }
 
+    // Окно загрузки
+    private _loadingScreen: ILoadingScreen
+
     // HTML канвас игры
     static canvas: HTMLCanvasElement
 
@@ -18,10 +23,13 @@ export class Game {
     static engine: BABYLON.Engine
 
     // Конструктор
-    constructor(canvasId: string) {
-        let canvas = document.getElementById(canvasId) as HTMLCanvasElement
+    constructor(root: HTMLElement) {
+        let canvas = document.createElement("canvas")
+        root.appendChild(canvas)
+
         Game.canvas = canvas
         Game.engine = new BABYLON.Engine(Game.canvas, true)
+        this._loadingScreen = new DefaultLoadingScreen(root)
     }
 
     // Устанавливает состояние
@@ -35,5 +43,15 @@ export class Game {
         this._state = state
         Game.engine.runRenderLoop(this._renderFunc)
         return state.enter()
+    }
+
+    // Показывает окно загрузки
+    showLoadingScreen(): void {
+        this._loadingScreen.show()
+    }
+
+    // Скрывает окно загрузки
+    hideLoadingScreen(): void {
+        this._loadingScreen.hide()
     }
 }
