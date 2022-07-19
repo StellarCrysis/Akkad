@@ -43,6 +43,7 @@ export class Game {
         canvasContainer.style.outline = "none"
 
         let canvas = document.createElement("canvas")
+        canvas.style.outline = "none"
         canvas.style.width = "100%"
         canvas.style.height = "100%"
 
