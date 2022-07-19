@@ -5,4 +5,10 @@ export interface ILoadingScreen {
 
     // Прячет
     hide(): void
+
+    // Инициализирует элемент
+    init(): void
+
+    // Освобождает
+    dispose(): void
 }
