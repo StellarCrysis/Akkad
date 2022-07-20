@@ -1,11 +1,13 @@
 {
   "devDependencies": {
     "@babylonjs/core": "^5.14.1",
-    "babylonjs": "^5.14.1"
+    "@babylonjs/loaders": "^5.15.1",
+    "babylonjs": "^5.14.1",
+    "webpack-glsl-loader": "^1.0.1"
   },
   "name": "akkad",
   "module": "lib/index.js",
-  "types": "lib/index.d.ts",  
+  "types": "lib/index.d.ts",
   "description": "",
   "version": "0.0.2",
   "repository": {
@@ -17,8 +19,8 @@
   "bugs": {
     "url": "https://github.com/StellarCrysis/Akkad/issues"
   },
-  "homepage": "https://github.com/StellarCrysis/Akkad#readme",  
+  "homepage": "https://github.com/StellarCrysis/Akkad#readme",
   "scripts": {
     "build": "tsc"
-  }  
+  }
 }

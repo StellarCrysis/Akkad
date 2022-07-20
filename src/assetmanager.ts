@@ -39,13 +39,13 @@ export class AssetMeshLoadingTask implements IAssetLoadingTask {
     }
 
     // Загружает
-    async load(): Promise<any> {
+    load(): Promise<any> {        
         return BABYLON.SceneLoader.ImportMeshAsync("", this._path, this._name)
     }
 }
 
 // Управляет загрузкой ресурсов
-export abstract class AssetManager {
+export class AssetManager {
     // Задания
     private _tasks = new Map<string, IAssetLoadingTask>()
 
